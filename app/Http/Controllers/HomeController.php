@@ -26,17 +26,22 @@ class HomeController extends Controller
      */
     public function index()
     {
-        /*First phase // one by one uncommented each one and run */
-        //Role::create(['name'=>'writer']); //This will create a writer role
-        //Permission::create(['name'=>'edit post']); // This will create edit post permission
-        //auth()->user()->givePermissionTo('edit post'); //This will give permission to role
-        //auth()->user()->assignRole('writer'); //This will give role to permission
+        /*First phase // one by one uncommented each one and run 
+        Role::create(['name'=>'writer']); //This will create a writer role
+        Role::create(['name'=>'editor']);
+        Role::create(['name'=>'publisher']);
+        Role::create(['name'=>'admin']);
+        Permission::create(['name'=>'write post']); // This will create edit post permission
+        Permission::create(['name'=>'edit post']);
+        Permission::create(['name'=>'publish post']);*/
+
+       // auth()->user()->givePermissionTo('write post');//model has permission 
+        //auth()->user()->assignRole('write'); //This will give role to permission
         /*second phase*/
-        $permission = Permission::create(['name'=>'write post']);
-        $role = Role::findById(1);
-        $role->givePermissionTo($permission);
-
-
+        //$permission = Permission::create(['name'=>'write post']);
+       /* Role Has //$role = Role::findById(4);
+       $role->givePermissionTo('publish post'); Role has permission */
+       //auth()->user()->assignRole('admin');//Model_has_permission
         return view('home');
     }
 }
